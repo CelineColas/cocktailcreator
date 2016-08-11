@@ -1,0 +1,28 @@
+<div class="text-center">
+  <h3>Your cocktail : <%= @cocktail.name %></h3>
+
+ <table class="table">
+  <% @cocktail.doses.each do |dose| %>
+  <tr>
+    <td><%= dose.description %></td>
+    <td><%= dose.ingredient.name %></td>
+    <td><%= link_to "Delete this dose", cocktail_dose_path(dose.cocktail_id, dose.id),
+    method: :delete, data: { confirm: "Are you sure ? "}, class: "btn btn-info" %></td>
+  </tr>
+  <% end %>
+  </table>
+
+  <table class="table">
+    <tr>
+
+      <td>
+        <%= link_to "Back home", cocktails_path, class: "btn btn-primary"%>
+      </td>
+
+      <td>
+        <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail), class: "btn btn-success" %>
+      </td>
+
+    </tr>
+  </table>
+</div>
